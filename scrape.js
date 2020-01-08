@@ -2,9 +2,8 @@ const request = require('request');
 const cheerio = require('cheerio');
 
 console.log('hello');
-request(
-	'https://bitcointalk.org/index.php?action=profile;u=538922',
-	(response, error, html) => {
-		console.log(html);
-	}
-);
+request('https://www.robinwieruch.de/', (response, error, html) => {
+	const $ = cheerio.load(html);
+	const title = $('h1');
+	console.log(title.text);
+});
